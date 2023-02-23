@@ -9,7 +9,11 @@ import ShowUserName from './components/ShowUserName';
 function App() {
   const name = "Marcine";
   const otherName = useState("Tina");
-
+  var cars = [
+    { id: 1, brand: "Fiat Uno", km: 1900, color: "gray", newCar: false },
+    { id: 2, brand: "Ferrari", km: 0, color: "black", newCar: true },
+    { id: 3, brand: "Gol", km: 10000, color: "white", newCar: false }
+  ];
   return (
     <div className="App">
       <h1>Avançando em React</h1>
@@ -23,11 +27,15 @@ function App() {
       <ListRender />
       <ConditionalRender />
       {/* props */}
-      <ShowUserName name={name} secName={otherName} age={10}  newCar={true}/>
+      <ShowUserName name={name} secName={otherName} age={10} newCar={true} />
       {/* destructuring props */}
-      <CarDetails brand="BMW" km={100} color="black"  newCar={false}/>
-      {/* reaproveitando componentes */}
-      <CarDetails brand="FiatUno" km={200} color="gray " newCar={true}/>
+      <CarDetails brand="BMW" km={100} color="black" newCar={false} />
+      {/* reaproveitando componentes com lista */}
+      {
+        cars.map((car)=>(
+          <CarDetails brand= {car.brand} km={car.km} color={car.color} newCar={car.newCar} />
+        ))
+      }
     </div>
   );
 }
