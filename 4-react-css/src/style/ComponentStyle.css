@@ -6,3 +6,16 @@ p{
     color: tomato;
     background-color: black;
 }
+
+.red-title{
+    background-color: beige;
+    color: tomato;
+    font-size: 45px;
+    padding: 10px;
+    border: 2px solid ;
+}
+.title{
+    background-color: beige;
+    color: chartreuse;
+    font-size: 20px;
+}

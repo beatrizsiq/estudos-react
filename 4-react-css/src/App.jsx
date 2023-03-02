@@ -1,15 +1,18 @@
 import ComponentStyle from './components/ComponentStyle';
 import './App.css';
 import { useState } from 'react';
+import Title from './components/Title';
 
 function App() {
   var num = 15;
   var [name, setName] = useState("Beatriz");
+  var redTitle = false;
 
   function handleChangeName(newName) {
     // setName(newName);
     console.log(newName);
   }
+
   return (
     <div className="App">
       <h1>React com CSS </h1>
@@ -47,6 +50,19 @@ function App() {
       >
         O nome é "{name}"
       </h2>
+
+      {/* {Classe dinâmica} */}
+      <h2 className={redTitle ? "red-title" : "title"}>
+        Título com Classe (className) dinâmica
+      </h2>
+
+      {/* {CSS modules} 
+        CSS scoped - 1 arquivo CSS para 1 unico Componente
+        NomeDoComponente.module.css
+
+      */}
+      <Title/>
+      <h1 className='my_title'>Teste de modules</h1>
     </div>
   );
 }
