@@ -2,7 +2,6 @@ import { useState, useRef } from "react"
 import "../style/Game.css"
 
 //useRef -> cria referência à algum lugar
-
 const Game = ({
   verifyLetter,
   pickedWord,

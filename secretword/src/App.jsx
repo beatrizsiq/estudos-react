@@ -13,9 +13,12 @@ const stages = [
   { id: 2, name: "game" },
   { id: 3, name: "end" }
 ]
+
+const guessesQty = 3;
+
 function App() {
 
-  const [gameStage, setGameState] = useState(stages[0].name)
+  const [gameStage, setGameStage] = useState(stages[0].name)
   const [words] = useState(wordsList);
 
   const [pickedWord, setPickedWord] = useState("");
@@ -24,7 +27,7 @@ function App() {
 
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [guesses, setGuesses] = useState(3);
+  const [guesses, setGuesses] = useState(guessesQty);
   const [score, setScore] = useState(0);
 
   //escolhendo palavra e categoria 
@@ -51,16 +54,52 @@ function App() {
     setPickedWord(word);
     setPickedCategory(category);
     setLetters(wordLetters);
-    setGameState(stages[1].name)
+    setGameStage(stages[1].name)
   };
 
   //processar a letra digitada pelo usuário
   const verifyLetter = (letter) => {
-    console.log(letter);
+    const normalizedLetter = letter.toLowerCase();
+
+    //verificando se a letra já foi digitada
+    if (guessedLetters.includes(normalizedLetter) || wrongLetters.includes(normalizedLetter)) {
+      return;
+    }
+
+    //verificando acertos ou erros
+    if (letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter,
+      ]);
+    } else {
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters,
+        normalizedLetter,
+      ]);
+      setGuesses((actualGuesses) => actualGuesses - 1);
+    }
   }
 
+  const clearLetterStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+    
+  }
+
+  //useEffect monitora um dado escolhido
+  useEffect(() => {
+    if (guesses <= 0) {
+      //resetar todos os states
+      clearLetterStates();
+      setGameStage(stages[2].name);
+    }
+  }, [guesses]);
   //reinicia o jogo 
   const retryGame = () => {
+    setScore(0);
+    setGuesses(guessesQty);
+    setGameStage(stages[0].name);
   }
   return (
     <div className="App">
