@@ -1,3 +1,6 @@
+import React from 'react'
+import Button from '@mui/material/Button';
+
 import './App.css';
 // React
 import { useCallback, useEffect, useState } from 'react';
@@ -140,6 +143,7 @@ function App() {
           retryGame={retryGame} 
           score={score}
       />}
+
     </div>
   );
 }
