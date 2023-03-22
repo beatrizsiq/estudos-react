@@ -1,7 +1,7 @@
-import React from 'react'
-
-import { useState, useRef } from "react"
-import "../style/Game.css"
+import React from "react";
+import Button from "@mui/material/Button";
+import { useState, useRef } from "react";
+import "../style/Game.css";
 
 //useRef -> cria referência à algum lugar
 const Game = ({
@@ -12,20 +12,20 @@ const Game = ({
   guessedLetters,
   wrongLetters,
   guesses,
-  score }) => {
-
+  score,
+}) => {
   const [letter, setLetter] = useState("");
   const letterInputRef = useRef(null);
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
     verifyLetter(letter);
     setLetter("");
-    
+
     //focar no elemento input após o submit
     letterInputRef.current.focus();
+  };
 
-  }
 
   return (
     <div className="game">
@@ -38,14 +38,15 @@ const Game = ({
       </h3>
       <p>Você ainda tem {guesses} tentativa(s)!</p>
       <div className="wordContainer">
-        {letters.map((letter, i) => (
+        {letters.map((letter, i) =>
           guessedLetters.includes(letter) ? (
-            <span key={i} className="letter">{letter}</span>
+            <span key={i} className="letter">
+              {letter}
+            </span>
           ) : (
             <span key={i} className="blankSquare"></span>
           )
-
-        ))}
+        )}
       </div>
       <div className="letterContainer">
         <p>Tente adivinhar uma letra da palavra</p>
@@ -59,7 +60,9 @@ const Game = ({
             value={letter}
             ref={letterInputRef}
           />
-          <button>Jogar</button>
+          <Button variant="contained" color="success" type="submit">
+            Jogar
+          </Button>
         </form>
       </div>
       <div className="wrongLettersContainer">
@@ -69,7 +72,7 @@ const Game = ({
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Game
+export default Game;

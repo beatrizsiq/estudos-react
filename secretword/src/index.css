@@ -11,22 +11,3 @@ body {
   background: linear-gradient(180deg, #03045e 0%, #000814 100%);
   color: #fff;
 }
-
-button {
-  background-color: #1646a0;
-  color: #FFF;
-  padding: 0 45px;
-  border: 1px solid #1646a0;
-  border-radius: 25px;
-  height: 50px;
-  text-align: uppercase;
-  font-weight: bold;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: .4s;
-}
-
-button:hover{
-  background-color: #54729ed7;
-  border-color: #54729ed7;
-}
