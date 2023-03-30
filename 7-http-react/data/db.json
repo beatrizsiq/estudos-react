@@ -1,20 +1,29 @@
 {
   "products": [
-        {
-            "id":1,
-            "name": "Camisa",
-            "price": 45.67
-        }, 
-        {
-            "id":2,
-            "name": "Boné",
-            "price": 20.00
-        }, 
-        {
-            "id":3,
-            "name": "Calça",
-            "price": 99.90
-        }
-    ]
-
+    {
+      "id": 1,
+      "name": "Camisa",
+      "price": 59.9
+    },
+    {
+      "id": 2,
+      "name": "Calça vermelha",
+      "price": 70.9
+    },
+    {
+      "id": 3,
+      "name": "Boné",
+      "price": 40.89
+    },
+    {
+      "name": "Sapato Social",
+      "price": "29.34",
+      "id": 4
+    },
+    {
+      "name": "Sapato Social",
+      "price": "29.34",
+      "id": 5
+    }
+  ]
 }
