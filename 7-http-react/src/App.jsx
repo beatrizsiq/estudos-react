@@ -1,23 +1,26 @@
 import './App.css';
 import { useState, useEffect } from "react";
+import { useFetch } from './hooks/useFetch'; //4- custom hooks
+
 
 const url = "http://localhost:3000/products";
 
 function App() {
     const [products, setProducts] = useState([]);
+    const [items] = useFetch(url);
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
 
     //1 - resgatando dados
-    const fetchData = async () => {
-        const res = await fetch(url);
-        const data = await res.json();
-        setProducts(data);
-    }
+    // const fetchData = async () => {
+    //     const res = await fetch(url);
+    //     const data = await res.json();
+    //     setProducts(data);
+    // }
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
 
     // 2 - Adição de produtos
 
@@ -30,13 +33,18 @@ function App() {
         }
         //fetch com 2 parametros, 1 a url, 2 objeto contendo os dados de como será a requisição HTTP
         const res = await fetch(url, {
-            method:"POST", 
-            headers:{ //Cabeçalho da req.
+            method: "POST",
+            headers: {
                 "Content-Type": "application/json" //informando o conteúdo da req. que é json
             },
-            //corpo da req.
             body: JSON.stringify(product),//enviando o dado como json
-        })
+        });
+        //3 carregamento dinamico
+        const addedProduct = await res.json();
+
+        setProducts((previousProducts) => [...previousProducts, addedProduct]);
+        setName('');
+        setPrice('');
     }
 
     return (
@@ -45,7 +53,7 @@ function App() {
                 <h1>Lista de Produtos</h1>
                 <ul>
                     {
-                        products.map((product) => (
+                        items && items.map((product) => (
                             <li key={product.id}>
                                 {product.name} -  R${product.price}
                             </li>
