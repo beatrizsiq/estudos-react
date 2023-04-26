@@ -7,7 +7,7 @@ const url = "http://localhost:3000/products";
 
 function App() {
     const [products, setProducts] = useState([]);
-    const [items] = useFetch(url);
+    const {data: items} = useFetch(url);
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
 
@@ -44,7 +44,7 @@ function App() {
 
         setProducts((previousProducts) => [...previousProducts, addedProduct]);
         setName('');
-        setPrice('');
+        setPrice(0);
     }
 
     return (
@@ -52,13 +52,11 @@ function App() {
             <div className='listProducts'>
                 <h1>Lista de Produtos</h1>
                 <ul>
-                    {
-                        items && items.map((product) => (
-                            <li key={product.id}>
-                                {product.name} -  R${product.price}
-                            </li>
-                        ))
-                    }
+                    {items && items.map((product) => (
+                        <li key={product.id}>
+                            {product.name} -  R${product.price}
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div className='addProduct'>
