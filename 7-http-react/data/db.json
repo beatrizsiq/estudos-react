@@ -14,6 +14,36 @@
       "name": "Teclado Redragon",
       "price": "299.99",
       "id": 3
+    },
+    {
+      "name": "Porta de Vidro",
+      "price": "190",
+      "id": 4
+    },
+    {
+      "name": "Porta de Vidro",
+      "price": "2",
+      "id": 5
+    },
+    {
+      "name": "Suporte",
+      "price": "198",
+      "id": 6
+    },
+    {
+      "name": "",
+      "price": 0,
+      "id": 7
+    },
+    {
+      "name": "",
+      "price": 0,
+      "id": 8
+    },
+    {
+      "name": "",
+      "price": 0,
+      "id": 9
     }
   ]
 }
