@@ -5,10 +5,10 @@ import { useFetch } from "./hooks/useFetch"; //4- custom hooks
 const url = "http://localhost:3000/products";
 
 function App() {
-    const products = useFetch(url);
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
 
+    const [items, httpConfig, loading, error, errorMessage] = useFetch(url);
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -16,18 +16,7 @@ function App() {
             name,
             price,
         };
-        //fetch com 2 parametros, 1 a url, 2 objeto contendo os dados de como será a requisição HTTP
-        const res = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json", //informando o conteúdo da req. que é json
-            },
-            body: JSON.stringify(product), //enviando o dado como json
-        });
-        //3 carregamento dinamico
-        const addedProduct = await res.json();
-
-        // setProducts((previousProducts) => [...previousProducts, addedProduct]);
+        httpConfig(product, "POST");
         setName("");
         setPrice(0);
     };
@@ -60,20 +49,41 @@ function App() {
                         </label>
                     </div>
                     <div>
-                        <input type="submit" value="Adicionar" />
+                        <input
+                            type="submit"
+                            value={loading ? "Aguarde" : "Adicionar"}
+                            disabled={loading ? true : false}
+                        />
                     </div>
                 </form>
             </div>
             <div className="listProducts">
                 <h2>Lista de Produtos</h2>
-                <ul>
-                    {products &&
-                        products.map((product) => (
-                            <li key={product.id}>
-                                {product.name} - R${product.price}
-                            </li>
-                        ))}
-                </ul>
+                {loading && <p>Carregando dados..</p>}
+                {error && <p>{errorMessage}</p>}
+                {!loading && (
+                    <table>
+                        <thead>
+                            <th>Nome</th>
+                            <th>Valor</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            {items &&
+                                items.map((product) => (
+                                    <tr>
+                                        <td key={product.id}>{product.name}</td>
+                                        <td>R${product.price}</td>
+                                        <td>
+                                            <a href="">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
+                )}
             </div>
         </div>
     );

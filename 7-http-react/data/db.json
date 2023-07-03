@@ -6,44 +6,34 @@
       "id": 1
     },
     {
-      "name": "Mouse",
-      "price": "300.98",
+      "name": "Cadeira Gamer",
+      "price": "420.55",
       "id": 2
     },
     {
-      "name": "Teclado Redragon",
-      "price": "299.99",
+      "name": "Suporte para monitor",
+      "price": "340",
       "id": 3
     },
     {
-      "name": "Porta de Vidro",
-      "price": "190",
+      "name": "Cadeira Gamer",
+      "price": "800",
       "id": 4
     },
     {
-      "name": "Porta de Vidro",
-      "price": "2",
+      "name": "Suporte para microfone",
+      "price": "323.45",
       "id": 5
     },
     {
-      "name": "Suporte",
-      "price": "198",
+      "name": "Mouse",
+      "price": "78.04",
       "id": 6
     },
     {
-      "name": "",
-      "price": 0,
+      "name": "Mouse",
+      "price": "78.04",
       "id": 7
-    },
-    {
-      "name": "",
-      "price": 0,
-      "id": 8
-    },
-    {
-      "name": "",
-      "price": 0,
-      "id": 9
     }
   ]
 }
