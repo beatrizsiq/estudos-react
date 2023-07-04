@@ -12,7 +12,8 @@ export const useFetch = (url) => {
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
     const [error, setError] = useState(false);
-    
+    const [itemId, setItemId] = useState(null);
+
     //5 refatorando o post
     const httpConfig = (data, method) => {
         if (method === "POST") {
@@ -24,19 +25,37 @@ export const useFetch = (url) => {
                 body: JSON.stringify(data),
             });
             setMethod(method);
+        } else if (method === "DELETE") {
+            setConfig({
+                method,
+                headers: {
+                    "Content-type": "application/json",
+                },
+            });
+            setMethod(method);
+            setItemId(data);
         }
     };
 
     useEffect(() => {
+        
         const httpRequest = async () => {
+            let json = "";
+
             if (method === "POST") {
                 let fetchOptions = [url, config];
                 const res = await fetch(...fetchOptions);
                 const json = await res.json();
-                setCallFetch(json);
+            } else if (method === "DELETE") {
+                const urlDelete = `${url}/${itemId}`;
+                const res = await fetch(urlDelete, config);
+                const json = await res.json();
             }
+            setCallFetch(json);
         };
+
         httpRequest();
+        
     }, [config, method, url]);
 
     useEffect(() => {
@@ -46,7 +65,6 @@ export const useFetch = (url) => {
                 const responseUrl = await fetch(url);
                 const json = await responseUrl.json();
                 setData(json);
-                
             } catch (error) {
                 setErrorMessage("Houve um erro: " + error.message);
                 setError(true);

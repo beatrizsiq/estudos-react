@@ -21,6 +21,10 @@ function App() {
         setPrice(0);
     };
 
+    const handleRemove = (productId) => {
+        httpConfig(productId, "DELETE");
+    };
+
     return (
         <div className="App">
             <div className="addProduct">
@@ -75,9 +79,13 @@ function App() {
                                         <td key={product.id}>{product.name}</td>
                                         <td>R${product.price}</td>
                                         <td>
-                                            <a href="">
+                                            <button
+                                                onClick={() =>
+                                                    handleRemove(product.id)
+                                                }
+                                            >
                                                 <i class="fa-solid fa-trash"></i>
-                                            </a>
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
