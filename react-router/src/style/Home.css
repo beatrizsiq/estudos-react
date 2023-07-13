@@ -1,0 +1,24 @@
+.products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.linkProduct {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    list-style: none;
+    margin: 0 10px;
+    width: 20%;
+    text-decoration: none;
+    color: black;
+}
+
+.linkProduct:visited {
+    margin: 0 10px;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
