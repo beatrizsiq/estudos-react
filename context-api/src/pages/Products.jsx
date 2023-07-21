@@ -1,6 +1,4 @@
-import { useContext } from "react";
-
-import { CounterContext } from "../context/CounterContext";
+import { useCounterContext } from "../hooks/useCounterContext";
 
 import { Text, Center, Box } from "@chakra-ui/react";
 
@@ -13,7 +11,7 @@ const Products = () => {
         color: "#343a40",
         borderRadius: "5",
     };
-    const { counter } = useContext(CounterContext);
+    const { counter } = useCounterContext();
     return (
         <div>
             <Center>

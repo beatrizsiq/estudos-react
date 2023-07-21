@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { ChakraBaseProvider, Container } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import { ChakraProvider } from '@chakra-ui/react'
 
 import Navbar from "./components/Navbar";
