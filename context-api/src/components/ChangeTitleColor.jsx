@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const ChangeTitleColor = () => {
     const [selectedOption, setSelectedOption] = useState();
-    const { color, dispatch } = useTitleColorContext();
+    const {dispatch } = useTitleColorContext();
 
     const setTitleColor = (color) => {
         dispatch({ type: color });
