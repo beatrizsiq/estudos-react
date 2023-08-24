@@ -1,11 +1,10 @@
-import ChangeCounter from "../components/ChangeCounter";
-
 import { Text, Center, Box } from "@chakra-ui/react";
 
 import { useCounterContext } from "../hooks/useCounterContext";
 import { useTitleColorContext } from "../hooks/useTitleColorContext";
-import ChangeTitleColor from "../components/ChangeTitleColor";
 
+import ChangeCounter from "../components/ChangeCounter";
+import ChangeTitleColor from "../components/ChangeTitleColor";
 const Home = () => {
     const boxStyles = {
         bgGradient: "linear(to-l, #FFFF, #f4f1de)",

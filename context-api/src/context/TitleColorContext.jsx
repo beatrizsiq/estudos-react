@@ -20,7 +20,7 @@ export const TitleColorContextProvider = ({ children }) => {
         color: "purple",
         bgColor: "black"
     });
-
+    console.log(dispatch);
     return (
         <TitleColorContext.Provider value={{ ...state, dispatch }}>
             {children}
